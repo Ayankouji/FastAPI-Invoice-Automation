@@ -47,6 +47,7 @@ async def extract_invoice(file: UploadFile = File(...)):
 
     with open(file_path, "wb") as buffer:
         shutil.copyfileobj(file.file, buffer)
+        
 
     raw_data = process_invoice(file_path)
     return extract_invoice_minimal(raw_data)

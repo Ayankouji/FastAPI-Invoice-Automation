@@ -17,13 +17,14 @@
 #     total: float
 #     line_items: List[LineItem]
 
-
 from pydantic import BaseModel
 from typing import Optional
 
 class InvoiceMinimalResponse(BaseModel):
     customer_name: Optional[str]
+    vendor_name: Optional[str]
+    item_selling_name: Optional[str]
     invoice_number: Optional[str]
     invoice_date: Optional[str]
     salesperson: Optional[str]
- 
+

@@ -19,11 +19,18 @@
 #     }
 
 def extract_invoice_minimal(raw):
+    
+    vendor_name = raw.get("vendor", {}).get("name")
+    
+    # Extract first line item name safely
+    item_name = None
+    if raw.get("line_items"):
+        item_name = raw["line_items"][0].get("description")
+
     return {
-        "customer_name": (
-            raw.get("bill_to", {}).get("name")
-            or raw.get("vendor", {}).get("name")
-        ),
+        "customer_name": raw.get("bill_to", {}).get("name"),
+        "vendor_name": vendor_name,
+        "item_selling_name": item_name,
         "invoice_number": raw.get("invoice_number"),
         "invoice_date": raw.get("date"),
         "salesperson": raw.get("salesperson") or None
