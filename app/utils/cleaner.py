@@ -33,5 +33,6 @@ def extract_invoice_minimal(raw):
         "item_selling_name": item_name,
         "invoice_number": raw.get("invoice_number"),
         "invoice_date": raw.get("date"),
-        "salesperson": raw.get("salesperson") or None
+        "salesperson": raw.get("salesperson") or None,
     }
+
